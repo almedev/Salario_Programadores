@@ -124,45 +124,45 @@ $(document).ready(function() {
     //     $("#btnEditarUsuario").attr("idusuario", idUsuario);
     // })
 
-    // $("#tablaListaUsuarios").on("click", "#btn-eliminar", function() {
-    //     var idUsuario = $(this).attr("idUsuario");
+    $("#tablaListaUsuarios").on("click", "#btn-eliminar", function() {
+        var idUsuario = $(this).attr("idUsuario");
 
-    //     swal({
-    //             title: "Advertencia!",
-    //             text: "Estas seguro de eliminar este registro?",
-    //             icon: "warning",
-    //             buttons: {
-    //                 cancel: "Cancelar",
-    //                 defeat: "Aceptar"
-    //             },
-    //             dangerMode: true,
-    //         })
-    //         .then((willDelete) => {
-    //             if (willDelete) {
-    //                 var objData = new FormData();
-    //                 objData.append("elim_idUsuario", idUsuario);
-    //                 $.ajax({
-    //                     url: "control/usuariosControl.php",
-    //                     type: "post",
-    //                     dataType: "json",
-    //                     data: objData,
-    //                     cache: false,
-    //                     contentType: false,
-    //                     processData: false,
-    //                     success: function(respuesta) {
-    //                         swal(respuesta, {
-    //                             icon: "success",
-    //                         });
+        swal({
+                title: "¡Advertencia!",
+                text: "¿Esta seguro de eliminar este registro?",
+                icon: "warning",
+                buttons: {
+                    cancel: "Cancelar",
+                    defeat: "Aceptar"
+                },
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    var objData = new FormData();
+                    objData.append("elim_idUsuario", idUsuario);
+                    $.ajax({
+                        url: "control/usuariosControl.php",
+                        type: "post",
+                        dataType: "json",
+                        data: objData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function(respuesta) {
+                            swal(respuesta, {
+                                icon: "success",
+                            });
 
-    //                         cargarTablaUsuarios();
-    //                     }
-    //                 })
-    //             } else {
-    //                 swal("Esta acción ha sido cancelada!");
-    //             }
-    //         });
+                            cargarTablaUsuarios();
+                        }
+                    })
+                } else {
+                    swal("Esta acción ha sido cancelada");
+                }
+            });
 
-    // })
+    })
 
 
 

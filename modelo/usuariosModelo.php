@@ -49,22 +49,22 @@ class ModeloUsuarios{
     // }
 
 
-    // public static function mdlEliminarUsuario($idUsuario){
-    //     try {
-    //         $objRespuesta = Conexion::conectar()->prepare("DELETE FROM usuarios WHERE idusuario=:idusuario");
-    //         $objRespuesta->bindParam(":idusuario",$idUsuario);
-    //         $respuesta = "";
-    //         if ($objRespuesta->execute()){
-    //             $respuesta = "datos eliminados correctamente";
-    //         }else{
-    //             $respuesta = "error al eliminar datos";
-    //         }
-    //     } catch (Exception $e) {
-    //         $respuesta = $e;
-    //     }
+    public static function mdlEliminarUsuario($idUsuario){
+        try {
+            $objRespuesta = Conexion::conectar()->prepare("DELETE FROM pruebas2 WHERE idusuario=:idusuario");
+            $objRespuesta->bindParam(":idusuario",$idUsuario);
+            $respuesta = "";
+            if ($objRespuesta->execute()){
+                $respuesta = "datos eliminados correctamente";
+            }else{
+                $respuesta = "error al eliminar datos";
+            }
+        } catch (Exception $e) {
+            $respuesta = $e;
+        }
         
 
-    //     return $respuesta;
-    // }
+        return $respuesta;
+    }
 
 }

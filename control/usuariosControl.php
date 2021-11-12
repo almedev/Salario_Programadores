@@ -26,10 +26,10 @@ class ControlUsuarios{
     //     echo json_encode($objRespuesta);
     // }
 
-    // public function ctrEliminarUsuario(){
-    //     $objRespuesta = ModeloUsuarios::mdlEliminarUsuario($this->idUsuario);
-    //     echo json_encode($objRespuesta);
-    // }
+    public function ctrEliminarUsuario(){
+        $objRespuesta = ModeloUsuarios::mdlEliminarUsuario($this->idUsuario);
+        echo json_encode($objRespuesta);
+    }
 
 }
 
@@ -60,8 +60,8 @@ if (isset($_POST["cargarDatos"])  == "ok"){
 
 // }
 
-// if (isset($_POST["elim_idUsuario"])){
-//     $objEliminarUsuario = new ControlUsuarios();
-//     $objEliminarUsuario->idUsuario = $_POST["elim_idUsuario"];
-//     $objEliminarUsuario->ctrEliminarUsuario();
-// }
+if (isset($_POST["elim_idUsuario"])){
+    $objEliminarUsuario = new ControlUsuarios();
+    $objEliminarUsuario->idUsuario = $_POST["elim_idUsuario"];
+    $objEliminarUsuario->ctrEliminarUsuario();
+}
