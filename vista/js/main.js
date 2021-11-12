@@ -84,7 +84,7 @@ $(document).ready(function() {
                 function cargarCuerpoTabla(item, index) {
                     var objBotones = '';
                     objBotones += '<div class="btn-group">';
-                    objBotones += '<button id="btn-editar" data-toggle="modal" data-target="#ventanaEditarUsuarios" idusuario="' + item.idusuario + '" nombres="' + item.nombres + '" apellidos="' + item.apellidos + '" direccion="' + item.direccion + '" telefono="' + item.telefono + '"  title="editar" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></button>';
+                    objBotones += '<button id="btn-editar" data-toggle="modal" data-target="#ventanaEditarUsuarios" idusuario="' + item.idusuario + '" nivel="' + item.nivel +'" tipodocumento="' + item.tipodocumento +'" numerodocumento="' + item.numerodocumento +'" nombres="' + item.nombres + '" apellidos="' + item.apellidos + '" salario="' + item.salario + '"  title="editar" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></button>';
                     objBotones += '<button id="btn-eliminar" idUsuario="' + item.idusuario + '"  title="eliminar" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>';
                     objBotones += '</div>';
 
@@ -110,19 +110,26 @@ $(document).ready(function() {
 
 
 
-    // $("#tablaListaUsuarios").on("click", "#btn-editar", function() {
-    //     var idUsuario = $(this).attr("idusuario");
-    //     var nombres = $(this).attr("nombres");
-    //     var apellidos = $(this).attr("apellidos");
-    //     var direccion = $(this).attr("direccion");
-    //     var telefono = $(this).attr("telefono");
-
-    //     $("#txt_editnombres").val(nombres);
-    //     $("#txt_editapellidos").val(apellidos);
-    //     $("#txt_editdireccion").val(direccion);
-    //     $("#txt_edittelefono").val(telefono);
-    //     $("#btnEditarUsuario").attr("idusuario", idUsuario);
-    // })
+    $("#tablaListaUsuarios").on("click", "#btn-editar", function() {
+       
+        
+        var idUsuario = $(this).attr("idusuario");
+        var nivel = $(this).attr("nivel");
+        var tipodocumento = $(this).attr("tipodocumento");
+        var numerodocumento =$(this).attr("numerodocumento")
+        var nombres = $(this).attr("nombres");
+        var apellidos = $(this).attr("apellidos");
+        var salario = $(this).attr("salario");
+        
+        $("#txt_editnivel").val(nivel);
+        $("#txt_edittipodocumento").val(tipodocumento);
+        $("#txt_editnumerodocumento").val(numerodocumento);
+        $("#txt_editnombres").val(nombres);
+        $("#txt_editapellidos").val(apellidos);
+        $("#txt_editsalario").val(salario);
+        
+        $("#btnEditarUsuario").attr("idusuario", idUsuario);
+    })
 
     $("#tablaListaUsuarios").on("click", "#btn-eliminar", function() {
         var idUsuario = $(this).attr("idUsuario");
@@ -171,37 +178,42 @@ $(document).ready(function() {
 
 
 
-    // $("#btnEditarUsuario").click(function() {
-    //     var idUsuario = $(this).attr("idusuario");
-    //     var nombres = $("#txt_editnombres").val();
-    //     var apellidos = $("#txt_editapellidos").val();
-    //     var telefono = $("#txt_edittelefono").val();
-    //     var direccion = $("#txt_editdireccion").val();
+    $("#btnEditarUsuario").click(function() {
+        var idUsuario = $(this).attr("idusuario");
+        var nivel =$("txt_editnivel").val();
+        var tipodocumento =$("txt_edittipodocumento").val();
+        var numerodocumento =$("txt_editnumerodocumento").val();
+        var nombres = $("#txt_editnombres").val();
+        var apellidos = $("#txt_editapellidos").val();
+        var salario = $("#txt_editsalario").val();
+       
 
-    //     var objData = new FormData();
-    //     objData.append("edit_nombres", nombres);
-    //     objData.append("edit_apellidos", apellidos);
-    //     objData.append("edit_telefono", telefono);
-    //     objData.append("edit_direccion", direccion);
-    //     objData.append("edit_idUsuario", idUsuario);
+        var objData = new FormData();
+        objData.append("edit_nivel", nivel);
+        objData.append("edit_tipodocumento", tipodocumento);
+        objData.append("edit_numerodocumento", numerodocumento);
+        objData.append("edit_nombres", nombres);
+        objData.append("edit_apellidos", apellidos);
+        objData.append("edit_salario", salario);
+        objData.append("edit_idUsuario", idUsuario);
 
-    //     $.ajax({
-    //         url: "control/usuariosControl.php",
-    //         type: "post",
-    //         dataType: "json",
-    //         data: objData,
-    //         cache: false,
-    //         contentType: false,
-    //         processData: false,
-    //         success: function(respuesta) {
-    //             $("#ventanaEditarUsuarios").modal('toggle');
-    //             alert(respuesta);
-    //             cargarTablaUsuarios();
-    //         }
-    //     })
+        $.ajax({
+            url: "control/usuariosControl.php",
+            type: "post",
+            dataType: "json",
+            data: objData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(respuesta) {
+                $("#ventanaEditarUsuarios").modal('toggle');
+                alert(respuesta);
+                cargarTablaUsuarios();
+            }
+        })
 
 
-    // })
+    })
 
 
 
