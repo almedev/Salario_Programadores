@@ -3,8 +3,9 @@ include_once "conexion.php";
 
 class ModeloUsuarios{
 
-    public static function mdlInsertarUsuario($tipodocumento,$numerodocumento,$nombres,$apellidos,$salario){
-        $objRespuesta = Conexion::conectar()->prepare("INSERT INTO pruebas2(tipodocumento,numerodocumento,nombres,apellidos,salario)VALUES(:tipodocumento,:numerodocumento,:nombres,:apellidos,:salario)");
+    public static function mdlInsertarUsuario($nivel,$tipodocumento,$numerodocumento,$nombres,$apellidos,$salario){
+        $objRespuesta = Conexion::conectar()->prepare("INSERT INTO pruebas2(nivel,tipodocumento,numerodocumento,nombres,apellidos,salario)VALUES(:nivel,:tipodocumento,:numerodocumento,:nombres,:apellidos,:salario)");
+        $objRespuesta->bindParam(":nivel",$nivel);
         $objRespuesta->bindParam(":tipodocumento",$tipodocumento);
         $objRespuesta->bindParam(":numerodocumento",$numerodocumento);
         $objRespuesta->bindParam(":nombres",$nombres);

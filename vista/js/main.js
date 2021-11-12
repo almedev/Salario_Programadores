@@ -30,14 +30,17 @@ $(document).ready(function() {
 
 
     $("#btnGuardarUsuario").click(function() {
+        var nivel = $("#txt_nivel").val();
         var tipodocumento = $("#txt_tipodocumento").val();
         var numerodocumento = $("#txt_numerodocumento").val();
         var nombres = $("#txt_nombres").val();
         var apellidos = $("#txt_apellidos").val();
+        var salario = $("#txt_salario").val();
         
         
 
         var objData = new FormData();
+        objData.append("nivel", nivel);
         objData.append("tipodocumento", tipodocumento);
         objData.append("numerodocumento", numerodocumento);
         objData.append("nombres", nombres);
@@ -89,6 +92,7 @@ $(document).ready(function() {
                     contadorUsuarios += 1;
                     interface += '<tr>';
                     interface += '<td>' + contadorUsuarios + '</td>';
+                    interface += '<td>' + item.nivel + '</td>';
                     interface += '<td>' + item.tipodocumento + '</td>';
                     interface += '<td>' + item.numerodocumento + '</td>';
                     interface += '<td>' + item.nombres + '</td>';

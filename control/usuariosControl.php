@@ -3,6 +3,7 @@ include_once "../modelo/usuariosModelo.php";
 
 class ControlUsuarios{
     public $idUsuario;
+    public $nivel;
     public $tipodocumento;
     public $numerodocumento;
     public $nombres;
@@ -11,7 +12,7 @@ class ControlUsuarios{
     
 
     public function ctrInsertarUsuario(){
-        $objRespuesta = ModeloUsuarios::mdlInsertarUsuario($this->tipodocumento,$this->numerodocumento,$this->nombres,$this->apellidos,$this->salario);
+        $objRespuesta = ModeloUsuarios::mdlInsertarUsuario($this->nivel,$this->tipodocumento,$this->numerodocumento,$this->nombres,$this->apellidos,$this->salario);
         echo json_encode($objRespuesta);
     }
 
@@ -32,8 +33,9 @@ class ControlUsuarios{
 
 }
 
-if (isset($_POST["tipodocumento"]) && isset($_POST["numerodocumento"]) && isset($_POST["nombres"]) && isset($_POST["apellidos"]) && isset($_POST["salario"])){
+if (isset($_POST["nivel"]) && isset($_POST["tipodocumento"]) && isset($_POST["numerodocumento"]) && isset($_POST["nombres"]) && isset($_POST["apellidos"]) && isset($_POST["salario"])){
     $objUsuario = new ControlUsuarios();
+    $objUsuario->nivel = $_POST["nivel"];
     $objUsuario->tipodocumento = $_POST["tipodocumento"];
     $objUsuario->numerodocumento = $_POST["numerodocumento"];
     $objUsuario->nombres = $_POST["nombres"];
