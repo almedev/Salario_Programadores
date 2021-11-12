@@ -31,22 +31,25 @@ class ModeloUsuarios{
         return $aListaUsuarios;
     }
 
-    // public static function mdlEditarUsuario($nombres,$apellidos,$telefono,$direccion,$idUsuario){
-    //     $objRespuesta = Conexion::conectar()->prepare("UPDATE usuarios SET nombres=:nombres,apellidos=:apellidos,telefono=:telefono,direccion=:direccion WHERE idusuario=:idusuario");
-    //     $objRespuesta->bindParam(":nombres",$nombres);
-    //     $objRespuesta->bindParam(":apellidos",$apellidos);
-    //     $objRespuesta->bindParam(":telefono",$telefono);
-    //     $objRespuesta->bindParam(":direccion",$direccion);
-    //     $objRespuesta->bindParam(":idusuario",$idUsuario);
-    //     $respuesta = "";
+    public static function mdlEditarUsuario($nivel,$tipodocumento,$numerodocumento,$nombres,$apellidos,$salario,$idUsuario){
+        $objRespuesta = Conexion::conectar()->prepare("UPDATE pruebas2 SET nivel=:nivel,tipodocumento=:tipodocumento,numerodocumento=:numerodocumento,nombres=:nombres,apellidos=:apellidos,salario=:salario WHERE idusuario=:idusuario");
+        $objRespuesta->bindParam(":nivel",$nivel);
+        $objRespuesta->bindParam(":tipodocumento",$tipodocumento);
+        $objRespuesta->bindParam(":numerodocumento",$numerodocumento);
+        $objRespuesta->bindParam(":nombres",$nombres);
+        $objRespuesta->bindParam(":apellidos",$apellidos);
+        $objRespuesta->bindParam(":salario",$salario);
+     
+        $objRespuesta->bindParam(":idusuario",$idUsuario);
+        $respuesta = "";
 
-    //     if ($objRespuesta->execute()){
-    //         $respuesta = "datos modificados correctamente";
-    //     }else{
-    //         $respuesta = "error al modificar datos";
-    //     }
-    //     return $respuesta;
-    // }
+        if ($objRespuesta->execute()){
+            $respuesta = "datos modificados correctamente";
+        }else{
+            $respuesta = "error al modificar datos";
+        }
+        return $respuesta;
+    }
 
 
     public static function mdlEliminarUsuario($idUsuario){

@@ -21,10 +21,10 @@ class ControlUsuarios{
         echo json_encode($objRespuesta);
     }
 
-    // public function ctrEditarUsuario(){
-    //     $objRespuesta = ModeloUsuarios::mdlEditarUsuario($this->nombres,$this->apellidos,$this->telefono,$this->direccion,$this->idUsuario);
-    //     echo json_encode($objRespuesta);
-    // }
+    public function ctrEditarUsuario(){
+        $objRespuesta = ModeloUsuarios::mdlEditarUsuario($this->nivel,$this->tipodocumento,$this->numerodocumento,$this->nombres,$this->apellidos,$this->salario,$this->idUsuario);
+        echo json_encode($objRespuesta);
+    }
 
     public function ctrEliminarUsuario(){
         $objRespuesta = ModeloUsuarios::mdlEliminarUsuario($this->idUsuario);
@@ -49,16 +49,18 @@ if (isset($_POST["cargarDatos"])  == "ok"){
     $objListaUsuarios->ctrListarUsuarios();
 }
 
-// if (isset($_POST["edit_nombres"]) && isset($_POST["edit_apellidos"]) && isset($_POST["edit_telefono"]) && isset($_POST["edit_direccion"]) && isset($_POST["edit_idUsuario"])){
-//     $objEditarUsuario = new ControlUsuarios();
-//     $objEditarUsuario->nombres = $_POST["edit_nombres"];
-//     $objEditarUsuario->apellidos = $_POST["edit_apellidos"];
-//     $objEditarUsuario->telefono = $_POST["edit_telefono"];
-//     $objEditarUsuario->direccion = $_POST["edit_direccion"];
-//     $objEditarUsuario->idUsuario = $_POST["edit_idUsuario"];
-//     $objEditarUsuario->ctrEditarUsuario();
+if (isset($_POST["edit_nivel"]) && isset($_POST["edit_tipodocumento"]) && isset($_POST["edit_numerodocumento"]) && isset($_POST["edit_nombres"]) && isset($_POST["edit_apellidos"]) && isset($_POST["edit_salario"]) && isset($_POST["edit_idUsuario"])){
+    $objEditarUsuario = new ControlUsuarios();
+    $objEditarUsuario->nivel = $_POST["edit_nivel"];
+    $objEditarUsuario->tipodocumento = $_POST["edit_tipodocumento"];
+    $objEditarUsuario->numerodocumento = $_POST["edit_numerodocumento"];
+    $objEditarUsuario->nombres = $_POST["edit_nombres"];
+    $objEditarUsuario->apellidos = $_POST["edit_apellidos"];
+    $objEditarUsuario->salario = $_POST["edit_salario"];
+    $objEditarUsuario->idUsuario = $_POST["edit_idUsuario"];
+    $objEditarUsuario->ctrEditarUsuario();
 
-// }
+}
 
 if (isset($_POST["elim_idUsuario"])){
     $objEliminarUsuario = new ControlUsuarios();
