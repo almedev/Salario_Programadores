@@ -32,14 +32,13 @@ class ModeloUsuarios{
     }
 
     public static function mdlEditarUsuario($nivel,$tipodocumento,$numerodocumento,$nombres,$apellidos,$salario,$idUsuario){
-        $objRespuesta = Conexion::conectar()->prepare("UPDATE pruebas2 SET nivel=:nivel,tipodocumento=:tipodocumento,numerodocumento=:numerodocumento,nombres=:nombres,apellidos=:apellidos,salario=:salario WHERE idusuario=:idusuario");
+        $objRespuesta = Conexion::conectar()->prepare("UPDATE usuarios SET nivel=:nivel,tipodocumento=:tipodocumento,numerodocumento=:numerodocumento,nombres=:nombres,apellidos=:apellidos,salario=:salario WHERE idusuario=:idusuario");
         $objRespuesta->bindParam(":nivel",$nivel);
         $objRespuesta->bindParam(":tipodocumento",$tipodocumento);
         $objRespuesta->bindParam(":numerodocumento",$numerodocumento);
         $objRespuesta->bindParam(":nombres",$nombres);
         $objRespuesta->bindParam(":apellidos",$apellidos);
         $objRespuesta->bindParam(":salario",$salario);
-     
         $objRespuesta->bindParam(":idusuario",$idUsuario);
         $respuesta = "";
 
@@ -54,7 +53,7 @@ class ModeloUsuarios{
 
     public static function mdlEliminarUsuario($idUsuario){
         try {
-            $objRespuesta = Conexion::conectar()->prepare("DELETE FROM pruebas2 WHERE idusuario=:idusuario");
+            $objRespuesta = Conexion::conectar()->prepare("DELETE FROM usuarios WHERE idusuario=:idusuario");
             $objRespuesta->bindParam(":idusuario",$idUsuario);
             $respuesta = "";
             if ($objRespuesta->execute()){
