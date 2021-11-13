@@ -4,7 +4,7 @@ include_once "conexion.php";
 class ModeloUsuarios{
 
     public static function mdlInsertarUsuario($nivel,$tipodocumento,$numerodocumento,$nombres,$apellidos,$salario){
-        $objRespuesta = Conexion::conectar()->prepare("INSERT INTO pruebas2(nivel,tipodocumento,numerodocumento,nombres,apellidos,salario)VALUES(:nivel,:tipodocumento,:numerodocumento,:nombres,:apellidos,:salario)");
+        $objRespuesta = Conexion::conectar()->prepare("INSERT INTO usuarios(nivel,tipodocumento,numerodocumento,nombres,apellidos,salario)VALUES(:nivel,:tipodocumento,:numerodocumento,:nombres,:apellidos,:salario)");
         $objRespuesta->bindParam(":nivel",$nivel);
         $objRespuesta->bindParam(":tipodocumento",$tipodocumento);
         $objRespuesta->bindParam(":numerodocumento",$numerodocumento);
@@ -24,7 +24,7 @@ class ModeloUsuarios{
     }
 
     public static function mdlListarUsuarios(){
-        $objRespuesta = Conexion::conectar()->prepare("SELECT * FROM pruebas2");
+        $objRespuesta = Conexion::conectar()->prepare("SELECT * FROM usuarios");
         $objRespuesta->execute();
         $aListaUsuarios = $objRespuesta->fetchAll();
         $objRespuesta = null;
