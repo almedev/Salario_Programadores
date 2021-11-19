@@ -175,9 +175,9 @@ $(document).ready(function () {
 
     $("#btnEditarUsuario").click(function () {
         var idUsuario = $(this).attr("idusuario");
-        var nivel = $("txt_editnivel").val();
-        var tipodocumento = $("txt_edittipodocumento").val();
-        var numerodocumento = $("txt_editnumerodocumento").val();
+        var nivel = $("#txt_editnivel").val();
+        var tipodocumento = $("#txt_edittipodocumento").val();
+        var numerodocumento = $("#txt_editnumerodocumento").val();
         var nombres = $("#txt_editnombres").val();
         var apellidos = $("#txt_editapellidos").val();
         var salario = $("#txt_editsalario").val();
