@@ -1,5 +1,6 @@
 $(document).ready(function () {
     cargarTablaUsuarios();
+    $("#imagen").hide(); //oculta el img, y se muestra al cargar la pagina
 
     // //
     // $("#txt_tipodocumento").change(function(){
@@ -206,4 +207,43 @@ $(document).ready(function () {
             },
         });
     });
+
+
+    $("#txt_img").change(function() {
+        //cuando detecta un cambio en la clase txt_img
+        $("#imagen").show(); //muestra el archivo cuando se cargue (change)
+        const seleccionArchivo = document.querySelector("#txt_img");
+        const imagenPrevisualizacion = document.querySelector("#imagen");
+        const archivo = seleccionArchivo.files;
+
+        if (!archivo || !archivo.length) {
+            imagenPrevisualizacion.src = "";
+            return;
+        } else {
+            const objUrl = URL.createObjectURL(archivo[0]);
+            imagenPrevisualizacion.src = objUrl;
+        }
+    });
+
+    $("#btnGuardarUsuario").click(function() { //OJOJOJOJOJOJOJOJOJOJOJOJOJ
+        var imagen = document.getElementById("txt_img").files[0];
+        var objData = new FormData();
+        objData.append("imagen", imagen);
+
+        $.ajax({
+            url: "control/imagenControl.php",
+            method: "POST",
+            data: objData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: "json",
+            success: function(respuesta) {
+                alert(respuesta);
+
+            },
+        });
+
+    });
+
 });
