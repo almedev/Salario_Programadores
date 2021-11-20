@@ -2,6 +2,7 @@
 include_once "../modelo/usuariosModelo.php";
 
 class ControlUsuarios{
+
     public $idUsuario;
     public $nivel;
     public $tipodocumento;
@@ -49,15 +50,15 @@ if (isset($_POST["cargarDatos"])  == "ok"){
     $objListaUsuarios->ctrListarUsuarios();
 }
 
-if (isset($_POST["edit_nivel"]) && isset($_POST["edit_tipodocumento"]) && isset($_POST["edit_numerodocumento"]) && isset($_POST["edit_nombres"]) && isset($_POST["edit_apellidos"]) && isset($_POST["edit_salario"]) && isset($_POST["edit_idUsuario"])){
+if (isset($_POST["edit_nivel"]) && isset($_POST["edit_tipodocumento"]) && isset($_POST["edit_numerodocumento"]) && isset($_POST["edit_nombres"]) && isset($_POST["edit_apellidos"]) && isset($_POST["salario"]) &&  isset($_POST["edit_idUsuario"]) ){
     $objEditarUsuario = new ControlUsuarios();
     $objEditarUsuario->nivel = $_POST["edit_nivel"];
     $objEditarUsuario->tipodocumento = $_POST["edit_tipodocumento"];
     $objEditarUsuario->numerodocumento = $_POST["edit_numerodocumento"];
     $objEditarUsuario->nombres = $_POST["edit_nombres"];
     $objEditarUsuario->apellidos = $_POST["edit_apellidos"];
-    $objEditarUsuario->salario = $_POST["edit_salario"];
     $objEditarUsuario->idUsuario = $_POST["edit_idUsuario"];
+    $objEditarUsuario->salario = $_POST["salario"];
     $objEditarUsuario->ctrEditarUsuario();
 
 }

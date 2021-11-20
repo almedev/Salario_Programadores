@@ -16,7 +16,7 @@ class ModeloUsuarios{
         if ($objRespuesta->execute()){
             $mensaje = "Datos insertados correctamente";
         }else{
-            $mensaje = "error al insertar los datos";
+            $mensaje = "Error al insertar los datos";
         }
 
         return $mensaje;
@@ -40,6 +40,7 @@ class ModeloUsuarios{
         $objRespuesta->bindParam(":apellidos",$apellidos);
         $objRespuesta->bindParam(":salario",$salario);
         $objRespuesta->bindParam(":idusuario",$idUsuario);
+        
         $respuesta = "";
 
         if ($objRespuesta->execute()){

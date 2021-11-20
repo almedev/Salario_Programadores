@@ -2,30 +2,7 @@ $(document).ready(function () {
     cargarTablaUsuarios();
     $("#imagen").hide(); //oculta el img, y se muestra al cargar la pagina
 
-    // //
-    // $("#txt_tipodocumento").change(function(){
-    //     var tipoUsuario = $(this).val();
-    //     var salarioHora = 0;
-    //     var salarioDia = 0;
-    //     var salarioMes = 0;
-    //     var nombreTipoUsuario = "";
-
-    //     if (tipoUsuario == "1"){
-    //         salarioHora = 12500;
-    //         nombreTipoUsuario = "junior";
-    //     } else if (tipoUsuario == "2"){
-    //         salarioHora = 18000;
-    //         nombreTipoUsuario = "master";
-    //     }else{
-    //         salarioHora = 23000;
-    //         nombreTipoUsuario = "senior";
-    //     }
-
-    //     salarioDia = salarioHora * 8;
-    //     salario = salarioDia * 25;
-
-    // })
-    //
+   
 
     $("#btnGuardarUsuario").click(function () {
         var nivel = $("#txt_nivel").val();
@@ -33,7 +10,24 @@ $(document).ready(function () {
         var numerodocumento = $("#txt_numerodocumento").val();
         var nombres = $("#txt_nombres").val();
         var apellidos = $("#txt_apellidos").val();
-        var salario = $("#txt_salario").val();
+        var salario = $("#txt_nivel").val();
+        var salariodia = 0;
+        var salariomes = 0;
+
+
+        if (salario == "Junior") {
+            salariohora = 12500;
+        } else if (salario == "Master") {
+            salariohora = 18000;
+
+        } else {
+            salariohora = 23000;
+
+        }
+
+        salariodia = (salariohora * 8);
+        salariomes = (salariodia * 25);
+        salario = salariomes;
 
         var objData = new FormData();
         objData.append("nivel", nivel);
@@ -91,8 +85,7 @@ $(document).ready(function () {
                         item.nombres +
                         '" apellidos="' +
                         item.apellidos +
-                        '" salario="' +
-                        item.salario +
+                        
                         '"  title="editar" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></button>';
                     objBotones +=
                         '<button id="btn-eliminar" idUsuario="' +
@@ -125,14 +118,14 @@ $(document).ready(function () {
         var numerodocumento = $(this).attr("numerodocumento");
         var nombres = $(this).attr("nombres");
         var apellidos = $(this).attr("apellidos");
-        var salario = $(this).attr("salario");
+       
 
         $("#txt_editnivel").val(nivel);
         $("#txt_edittipodocumento").val(tipodocumento);
         $("#txt_editnumerodocumento").val(numerodocumento);
         $("#txt_editnombres").val(nombres);
         $("#txt_editapellidos").val(apellidos);
-        $("#txt_editsalario").val(salario);
+       
         $("#btnEditarUsuario").attr("idusuario", idUsuario);
     });
 
@@ -181,7 +174,25 @@ $(document).ready(function () {
         var numerodocumento = $("#txt_editnumerodocumento").val();
         var nombres = $("#txt_editnombres").val();
         var apellidos = $("#txt_editapellidos").val();
-        var salario = $("#txt_editsalario").val();
+        var salario = $("#txt_editnivel").val();
+
+        var salariodia = 0;
+        var salariomes = 0;
+       
+
+        if (salario == "Junior") {
+            salariohora = 12500;
+        } else if (salario == "Master") {
+            salariohora = 18000;
+
+        } else {
+            salariohora = 23000;
+
+        }
+
+        salariodia = (salariohora * 8);
+        salariomes = (salariodia * 25);
+        salario = salariomes;
 
         var objData = new FormData();
         objData.append("edit_nivel", nivel);
@@ -189,7 +200,7 @@ $(document).ready(function () {
         objData.append("edit_numerodocumento", numerodocumento);
         objData.append("edit_nombres", nombres);
         objData.append("edit_apellidos", apellidos);
-        objData.append("edit_salario", salario);
+        objData.append("salario", salario);
         objData.append("edit_idUsuario", idUsuario);
 
         $.ajax({
